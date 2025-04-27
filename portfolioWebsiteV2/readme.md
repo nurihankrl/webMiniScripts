@@ -1,0 +1,1 @@
+# 2024 de Web Tabanlı Uygulama Geliştirme dersinde verilen Proje Ödevim.

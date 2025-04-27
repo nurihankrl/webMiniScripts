@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Bootstrap 5 | Ders 45</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">Çıkış
+                    Yap</button>
+                <div class="modal fade" tabindex="-1" id="myModal" aria-labelledby="ExitLabel" aria-hidden="true"
+                    data-bs-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ExitLabel">İşlem Bilgisi</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Kapat"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="namelastname" class="col-form-label">Ad & Soyad</label>
+                                        <input type="text" class="form-control" id="namelastname">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message" class="col-form-label">Mesajınız</label>
+                                        <textarea name="form-control" id="message"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-bs-target="#myModal2"
+                                    data-bs-toggle="modal">İkinci Modal</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                <button type="button" class="btn btn-danger">Onayla</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" tabindex="-1" id="myModal2" aria-labelledby="ExitLabel2" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="ExitLabel2">İkinci İşlem</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Kapat"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/QEUSeLXvzrE"
+                                        title="Youtube video player" frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-bs-target="#myModal"
+                                    data-bs-toggle="modal">Geri Dön</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let myModal = new bootstrap.Modal(document.querySelector("#myModal"), {
+            keyboard: false,
+            backdrop: 'static'
+        });
+        let myElement = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var myList = myElement.map(function (x) {
+            return new bootstrap.Popover(x);
+        });
+        let myElement2 = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        var myList2 = myElement2.map(function (y) {
+            return new bootstrap.Popover(y
+            );
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
