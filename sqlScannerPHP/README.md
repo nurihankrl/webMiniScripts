@@ -1,61 +1,54 @@
-SQL Enjeksiyon Testi Aracı
+# SQL Enjeksiyon Testi Aracı
+
 Bu araç, verilen URL üzerinde SQL enjeksiyonu açıklarını tespit etmeye yardımcı olan basit bir test aracıdır. Aracın, farklı SQL enjeksiyon payload'ları kullanarak hedef siteyi test etmesine olanak tanır. Kullanıcılar, herhangi bir hedef URL'yi belirterek potansiyel güvenlik açıklarını hızlı bir şekilde kontrol edebilirler.
 
-Özellikler:
-SQL Enjeksiyon Testi: Verilen URL üzerinde farklı SQL enjeksiyonu payload'larını test eder.
+## Özellikler
 
-Proxy Desteği: Bağlantılarınızı bir proxy üzerinden geçirebilirsiniz.
+- **SQL Enjeksiyon Testi**: Verilen URL üzerinde farklı SQL enjeksiyonu payload'larını test eder.
+- **Proxy Desteği**: Bağlantılarınızı bir proxy üzerinden geçirebilirsiniz.
+- **Çeşitli Hata Algoritmaları**: MySQL, PostgreSQL, MSSQL, Oracle gibi farklı veritabanı sistemlerini test edebilir.
+- **Zaman Tabanlı SQL Enjeksiyon Testi**: Veritabanı yanıtlarını izleyerek zaman tabanlı SQL enjeksiyonu testleri yapar.
 
-Çeşitli Hata Algoritmaları: MySQL, PostgreSQL, MSSQL, Oracle gibi farklı veritabanı sistemlerini test edebilir.
+## Gerekli Bağımlılıklar
 
-Zaman Tabanlı SQL Enjeksiyon Testi: Veritabanı yanıtlarını izleyerek zaman tabanlı SQL enjeksiyonu testleri yapar.
+- **PHP 7.0 ve üzeri** sürümü yüklü olmalıdır.
+- **cURL PHP uzantısı** yüklü olmalıdır.
 
-Kurulum ve Kullanım:
-Gerekli Bağımlılıklar:
+## Kurulum ve Kullanım
 
-PHP 7.0 ve üzeri yüklü olmalıdır.
-
-cURL PHP uzantısı yüklü olmalıdır.
-
-Kodun Çalıştırılması:
+### 1. Kodun Çalıştırılması
 
 Bu dosyayı bir PHP sunucusuna yükleyin veya yerel olarak çalıştırın.
 
 Aşağıdaki gibi bir GET isteği göndererek aracı kullanabilirsiniz.
 
-Örnek GET İsteği:
-php-template
-Kopyala
-Düzenle
+#### Örnek GET İsteği:
 http://<sunucu_adresi>/sql_injection_tester.php?url=<hedef_sitenin_url>
+
 Eğer proxy kullanmak isterseniz, proxy parametresi ekleyebilirsiniz:
 
-php-template
-Kopyala
-Düzenle
+#### Proxy Kullanarak Test:
 http://<sunucu_adresi>/sql_injection_tester.php?url=<hedef_sitenin_url>&proxy=<proxy_adresi>
-Parametreler:
-url: Test etmek istediğiniz hedef web sitesi URL'si. Bu parametre zorunludur.
 
-proxy: İsteği göndermek için kullanmak istediğiniz proxy sunucu adresi. (Opsiyonel)
 
-Yanıt:
-Aracın cevabı JSON formatında dönecektir. Yanıt, aşağıdaki bilgileri içerir:
+### 2. Parametreler
 
-status: İşlem durumu ("başarılı" veya "hata").
+- **url** (Zorunlu): Test etmek istediğiniz hedef web sitesi URL'si.
+- **proxy** (Opsiyonel): İsteği göndermek için kullanmak istediğiniz proxy sunucu adresi.
 
-results: Test edilen payload'lar ve yanıtlar hakkında detaylı bilgiler.
+## Yanıt
 
-vulnerabilities: Bulunan SQL enjeksiyonu açıkları.
+Aracın cevabı **JSON** formatında dönecektir. Yanıt, aşağıdaki bilgileri içerir:
 
-http_code: HTTP yanıt kodu.
+- **status**: İşlem durumu ("başarılı" veya "hata").
+- **results**: Test edilen payload'lar ve yanıtlar hakkında detaylı bilgiler.
+- **vulnerabilities**: Bulunan SQL enjeksiyonu açıkları.
+- **http_code**: HTTP yanıt kodu.
+- **elapsed_time**: Test süresi.
 
-elapsed_time: Test süresi.
+### Örnek Yanıt
 
-Örnek Yanıt:
-json
-Kopyala
-Düzenle
+```json
 {
     "status": "başarılı",
     "url": "http://example.com",
@@ -73,7 +66,3 @@ Düzenle
     ],
     "vulnerability_count": 1
 }
-Uyarılar:
-Bu araç, yalnızca güvenli ve etik kullanım için tasarlanmıştır. Başka kişilere ait web sitelerinde izinsiz testler yapmanız yasalara aykırıdır.
-
-Gerçek bir web sitesinde test yapmadan önce, test yapacağınız site sahiplerinden izin aldığınızdan emin olun.
